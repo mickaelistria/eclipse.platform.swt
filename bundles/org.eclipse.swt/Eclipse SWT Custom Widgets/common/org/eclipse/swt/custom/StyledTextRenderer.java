@@ -486,6 +486,10 @@ int drawLine(int lineIndex, int paintX, int paintY, GC gc, Color widgetBackgroun
 			if (relativeSelection.x <= lineLength && lineLength < relativeSelection.y ) {
 				flags |= SWT.LAST_LINE_SELECTION;
 			}
+			if (start == 0 && end == lineLength) {
+				gc.setBackground(selectionBg);
+				gc.fillRectangle(paintX, paintY, client.width, verticalIndent);
+			}
 			// TODO calling draw multiple times here prints line multiple times, overriding some colors
 			layout.draw(gc, paintX, paintY, start, end - 1, selectionFg, selectionBg, flags);
 		}
